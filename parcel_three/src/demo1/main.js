@@ -16,5 +16,13 @@ const cubeGeometry = new THREE.BoxGeometry(1,1,1);
 const cubeMaterial = new THREE.MeshBasicMaterial({color: 0xffff00});
 
 //根据几何体和材质创建物体
-// const tube = new THREE.
+const tube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+scene.add(tube);
+
+const renderer = new THREE.WebGLRenderer();
+const width = 800; //宽度
+const height = 500; //高度
+renderer.setSize(width, height); //设置three.js渲染区域的尺寸(像素px)
+renderer.render(scene, camera); //执行渲染操作
+document.body.appendChild(renderer.domElement);
 
