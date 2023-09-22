@@ -1,6 +1,6 @@
 <template>
-  <div id="test12">
-    <div class="three-dom" ref="threeDom"></div>
+  <div id="test12" ref="threeDom">
+    
   </div>
 </template>
 
@@ -27,7 +27,6 @@ function initThree() {
   cube.position.set(0, 0, 0);
   scene.add(cube);
 
-  //光源
   const light = new THREE.PointLight(0xff0000, 1, 100);
   light.position.set(500, 500, 500);
   scene.add(light);
@@ -35,17 +34,20 @@ function initThree() {
   const axesHelper = new THREE.AxesHelper(500);
   scene.add(axesHelper);
 
-  
-
-  const width = 800;
-  const height = 500;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
   const camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
   camera.position.set(400, 400, 400);
   camera.lookAt(0, 0, 0);
   scene.add(camera);
 
-  const renderer = new THREE.WebGLRenderer();
+  const pixelRatio = window.devicePixelRatio;
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true //启动抗锯齿
+  });
   renderer.setSize(width, height);
+  renderer.setPixelRatio(pixelRatio);  //设置设备像素比，避免模糊
+  renderer.setClearColor(0xaaaaaa);  //设置背景颜色
   renderer.render(scene, camera);
 
   threeDom.value.appendChild(renderer.domElement);

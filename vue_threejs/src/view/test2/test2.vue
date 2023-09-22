@@ -1,6 +1,6 @@
 <template>
-  <div id="test2">
-    <div class="three-dom" ref="threeDom"></div>
+  <div id="test2" ref="threeDom">
+    
   </div>
 </template>
 
@@ -37,8 +37,8 @@ function initThree() {
 
   
 
-  const width = 800;
-  const height = 500;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
   const camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
   camera.position.set(400, 400, 400);
   camera.lookAt(0, 0, 0);
